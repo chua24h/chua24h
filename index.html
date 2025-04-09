@@ -2,145 +2,94 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Chùa 24H</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chùa 24h – Về chùa không cần rời nhà</title>
   <style>
     body {
-      background: linear-gradient(#e0f7fa, #fff);
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
+      background: linear-gradient(to bottom, #f5f1e7, #e8dbc2);
+      color: #3e2b14;
     }
-
-    .pagoda {
-      display: flex;
-      justify-content: center;
-      align-items: end;
-      padding: 60px 0;
-      position: relative;
-    }
-
-    .gate {
-      display: flex;
-      gap: 30px;
-      align-items: end;
-      background: #deb887;
+    header {
+      background: #9c6b30;
+      color: white;
       padding: 20px;
-      border-top: 12px solid #a0522d;
-      border-radius: 0 0 20px 20px;
-      position: relative;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      text-align: center;
     }
-
-    .roof {
-      position: absolute;
-      top: -90px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 350px;
-      height: 70px;
-      background: #8b0000;
-      border-radius: 0 0 100px 100px;
-      border-bottom: 10px solid #222;
-      box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
     }
-
-    .door {
-      width: 100px;
-      height: 150px;
-      background: #222;
-      border: 4px solid #333;
-      border-radius: 50% 50% 0 0;
-      position: relative;
-      box-shadow: inset 0 -4px 8px rgba(255,255,255,0.2);
+    header p {
+      margin: 5px 0 0;
+      font-style: italic;
     }
-
-    .door.center {
-      height: 190px;
-      width: 140px;
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 30px;
     }
-
-    .sign {
-      position: absolute;
-      top: -130px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: gold;
-      padding: 12px 24px;
-      border: 4px double #333;
-      font-weight: bold;
-      font-size: 24px;
-      color: #3e2723;
-      text-shadow: 1px 1px #fff;
+    .module {
+      background: #fffefc;
+      border: 1px solid #d1bfa3;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
-
-    .lantern {
-      position: absolute;
-      width: 24px;
-      height: 36px;
-      background: red;
-      border-radius: 50%;
-      border: 3px solid #900;
-      top: -50px;
-      animation: swing 2.5s infinite ease-in-out;
+    .module:hover {
+      transform: translateY(-5px);
+      background: #fffbe9;
     }
-
-    .lantern.left {
-      left: 40px;
+    .module h2 {
+      margin-top: 0;
+      color: #7a5523;
     }
-
-    .lantern.right {
-      right: 40px;
-    }
-
-    @keyframes swing {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(6deg); }
-    }
-
-    .buddha {
-      position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 60px;
-      color: #ffd700;
-    }
-
-    .incense {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 40px;
-      background: brown;
-      box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.6);
-    }
-
-    audio {
-      display: none;
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 20px;
+      background: #f0e8d8;
+      margin-top: 40px;
     }
   </style>
 </head>
-<body onload="document.getElementById('bell').play()">
-
-  <div class="pagoda">
-    <div class="roof"></div>
-    <div class="buddha">🧘‍♂️</div>
-    <div class="gate">
-      <div class="lantern left"></div>
-      <div class="lantern right"></div>
-      <div class="door"></div>
-      <div class="door center"></div>
-      <div class="door"></div>
-      <div class="sign">CHÙA 24H</div>
-      <div class="incense"></div>
+<body>
+  <header>
+    <h1>Chùa 24h</h1>
+    <p>“Chùa không đóng cửa” – “Về chùa không cần rời nhà” – “Tâm an 24/7”</p>
+  </header>
+  <main>
+    <div class="module" onclick="alert('Bạn vào khu Thắp nhang cầu nguyện')">
+      <h2>Thắp nhang</h2>
+      <p>Cầu nguyện và thỉnh an</p>
     </div>
-  </div>
-
-  <audio id="bell" autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2021/09/17/audio_d7fef6e4fa.mp3?filename=temple-bell-2-183270.mp3" type="audio/mpeg">
-  </audio>
-
+    <div class="module" onclick="alert('Bạn vào khu Gửi tâm nguyện cho thầy')">
+      <h2>Gửi tâm nguyện</h2>
+      <p>Nhờ thầy chùa cầu an</p>
+    </div>
+    <div class="module" onclick="alert('Bạn đang tụng kinh – niệm Phật')">
+      <h2>Tụng kinh – Niệm Phật</h2>
+      <p>Nghe pháp thoại – Tịnh tâm</p>
+    </div>
+    <div class="module" onclick="alert('Bạn đang bốc xăm cầu duyên, học, tài')">
+      <h2>Bốc xăm</h2>
+      <p>Xăm cát – hung – lời giải</p>
+    </div>
+    <div class="module" onclick="alert('Bạn đang gieo quẻ âm dương')">
+      <h2>Gieo quẻ âm dương</h2>
+      <p>Hỏi điều đang phân vân</p>
+    </div>
+    <div class="module" onclick="alert('Ghi nhật ký tâm linh hôm nay')">
+      <h2>Nhật ký tâm linh</h2>
+      <p>Nhớ lại, ghi lại, nuôi dưỡng tâm thiện</p>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Chùa 24h. Về chùa không cần rời nhà.
+  </footer>
 </body>
 </html>
