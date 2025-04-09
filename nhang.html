@@ -26,7 +26,7 @@
       max-width: 400px;
     }
     img {
-      max-height: 200px;
+      max-height: 300px;
       margin: 20px auto;
       display: none;
     }
@@ -40,17 +40,27 @@
     .cen img {
       max-height: 150px;
     }
-    .smoke {
+    .incense {
+      position: relative;
       width: 10px;
+      height: 60px;
+      background: #8B0000;
+      margin: 0 5px;
+    }
+    .smoke {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      width: 6px;
       height: 60px;
       background: linear-gradient(white, transparent);
       opacity: 0.6;
       animation: rise 3s infinite ease-in-out;
-      margin: 0 auto;
+      transform: translateX(-50%);
     }
     @keyframes rise {
-      0% { transform: translateY(20px) scale(1); opacity: 0.7; }
-      100% { transform: translateY(-80px) scale(0.7); opacity: 0; }
+      0% { transform: translate(-50%, 20px) scale(1); opacity: 0.7; }
+      100% { transform: translate(-50%, -80px) scale(0.7); opacity: 0; }
     }
     .back {
       margin-top: 40px;
@@ -80,9 +90,13 @@
 
   <div id="luHuong" class="cen" style="display: none;">
     <img src="https://i.imgur.com/BF0LST1.png" alt="Lư hương">
-    <div>
+    <div class="incense">
       <div class="smoke"></div>
+    </div>
+    <div class="incense">
       <div class="smoke" style="animation-delay: 0.5s;"></div>
+    </div>
+    <div class="incense">
       <div class="smoke" style="animation-delay: 1s;"></div>
     </div>
   </div>
@@ -96,13 +110,13 @@
       const val = document.getElementById('bantho').value;
       const img = document.getElementById('phat');
       if (val === 'thichca') {
-        img.src = 'https://upload.wikimedia.org/wikipedia/commons/5/5d/Gautama_Buddha_%28golden_statue%29.jpg';
+        img.src = 'https://example.com/thichca.jpg'; // Thay bằng URL hình ảnh chính xác
         img.style.display = 'block';
       } else if (val === 'adida') {
-        img.src = 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Amitabha_Buddha_Statue.jpg';
+        img.src = 'https://example.com/adida.jpg'; // Thay bằng URL hình ảnh chính xác
         img.style.display = 'block';
       } else if (val === 'quanam') {
-        img.src = 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Guanyin_Buddha_Statue.jpg';
+        img.src = 'https://example.com/quanam.jpg'; // Thay bằng URL hình ảnh chính xác
         img.style.display = 'block';
       } else {
         img.style.display = 'none';
