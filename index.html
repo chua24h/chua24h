@@ -74,6 +74,13 @@
     <h1>Chùa 24h .Com</h1>
     <p>“Chùa không đóng cửa” – “Về chùa không cần rời nhà” – “Tâm an 24/7”</p>
   </header>
+  <section style="text-align:center; margin-bottom: 30px;">
+  <label for="username" style="font-size: 1.1rem;">Nhập Họ tên hoặc Pháp danh:</label><br>
+  <input type="text" id="username" placeholder="VD: Diệu Âm, Thiện Tâm..." style="padding: 10px; margin: 10px; width: 240px; font-size: 1rem;">
+  <button onclick="luuTen()" style="padding: 10px 20px; font-size: 1rem;">Lưu tên</button>
+  <p id="ten-hien" style="margin-top: 10px; color: #5b4324;"></p>
+</section>
+
   <main>
      <a href="diemdanh.html" class="module"><h2>1. Điểm danh công đức</h2><p>“Hôm nay con đã vào chùa” – tích công đức mỗi ngày</p></a>
     <a href="nhang.html" class="module"><h2>2. Thắp nhang – Tâm nguyện</h2><p>Gửi tâm linh đến điện thờ – chọn ban thờ</p></a>
@@ -88,4 +95,22 @@
     &copy; 2025 Chùa 24h. Chùa không đóng cửa. Chùa onine 24h
   </footer>
 </body>
-</html>
+</html><script>
+  function luuTen() {
+    const ten = document.getElementById("username").value.trim();
+    if (ten.length > 0) {
+      localStorage.setItem("tenPhapDanh", ten);
+      document.getElementById("ten-hien").innerText = `🌸 Xin chào: ${ten}`;
+    } else {
+      alert("Vui lòng nhập Họ tên hoặc Pháp danh.");
+    }
+  }
+
+  window.onload = () => {
+    const ten = localStorage.getItem("tenPhapDanh");
+    if (ten) {
+      document.getElementById("ten-hien").innerText = `🌸 Xin chào: ${ten}`;
+    }
+  };
+</script>
+
