@@ -1,14 +1,140 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phongsinh – Chùa 24h</title>
+  <meta charset="UTF-8">
+  <title>Phóng Sanh – Chùa 24h</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      text-align: center;
+      padding: 20px;
+      color: #2c3e50;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    select, textarea, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #2ecc71;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #27ae60;
+    }
+    .effect-area {
+      margin-top: 30px;
+      min-height: 150px;
+      position: relative;
+    }
+    .animal {
+      width: 80px;
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: flyAway 3s forwards ease-out;
+    }
+    @keyframes flyAway {
+      0% { top: 100px; opacity: 1; }
+      100% { top: -100px; opacity: 0; }
+    }
+    .message {
+      font-style: italic;
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+    .back-link {
+      margin-top: 30px;
+      display: inline-block;
+      text-decoration: none;
+      color: #34495e;
+      font-weight: bold;
+    }
+    .music-toggle {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background-color: #ecf0f1;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      z-index: 100;
+    }
+  </style>
 </head>
-<body style="font-family:serif; background:#fdfaf4; color:#3c2f1f; padding:40px;">
-  <h1>Chùa 24h – Phongsinh</h1>
-  <p>[Nội dung module: phongsinh]</p>
-  <p><a href="index.html" style="color:#6b4b27;">← Trở về Trang Chủ</a></p>
+<body>
+  <h1>Phóng Sanh – Gieo hạt từ bi</h1>
+
+  <label for="loai">Chọn loại sinh linh:</label>
+  <select id="loai">
+    <option value="chim">Chim</option>
+    <option value="ca">Cá</option>
+    <option value="rua">Rùa</option>
+  </select><br>
+
+  <textarea id="loiNguyen" rows="3" cols="40" placeholder="Lời nguyện phóng sanh..."></textarea><br>
+  <button onclick="phongSanh()">Phóng sanh</button>
+
+  <div class="effect-area" id="effectArea"></div>
+
+  <div class="message" id="messageArea"></div>
+
+  <a href="index.html" class="back-link">← Quay về trang chủ</a>
+
+  <audio id="bgm" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0e7b6fb95e.mp3?filename=zen-garden-ambient-11897.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-toggle" onclick="toggleMusic()">Tắt nhạc</button>
+
+  <script>
+    let musicOn = true;
+    const audio = document.getElementById('bgm');
+
+    function toggleMusic() {
+      musicOn = !musicOn;
+      if (musicOn) {
+        audio.play();
+        document.querySelector('.music-toggle').textContent = "Tắt nhạc";
+      } else {
+        audio.pause();
+        document.querySelector('.music-toggle').textContent = "Bật nhạc";
+      }
+    }
+
+    function phongSanh() {
+      const loai = document.getElementById('loai').value;
+      const nguyen = document.getElementById('loiNguyen').value;
+      const effectArea = document.getElementById('effectArea');
+      const messageArea = document.getElementById('messageArea');
+
+      let imgSrc = '';
+      if (loai === 'chim') {
+        imgSrc = 'https://cdn-icons-png.flaticon.com/512/616/616430.png';
+      } else if (loai === 'ca') {
+        imgSrc = 'https://cdn-icons-png.flaticon.com/512/616/616408.png';
+      } else {
+        imgSrc = 'https://cdn-icons-png.flaticon.com/512/616/616415.png';
+      }
+
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.className = 'animal';
+      effectArea.innerHTML = '';
+      effectArea.appendChild(img);
+
+      messageArea.textContent = '🐦 Bạn đã phóng sanh thành công. Công đức vô lượng. ' + (nguyen.length > 5 ? `"${nguyen}"` : '');
+    }
+  </script>
 </body>
 </html>
