@@ -2,81 +2,52 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Thắp nhang – Tâm nguyện | Chùa 24h</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thắp nhang – Chùa 24h</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #f7f4ec, #efe6d3);
       font-family: 'Times New Roman', serif;
+      background: linear-gradient(to bottom, #f7f4ec, #efe6d3);
       color: #3c2f1f;
       text-align: center;
-      padding: 30px;
+      padding: 20px;
     }
     h1 {
-      font-size: 2rem;
       margin-bottom: 10px;
     }
     select, textarea, button {
+      margin-top: 10px;
       font-size: 1rem;
-      margin: 10px auto;
       padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #cbb994;
-      display: block;
-      width: 80%;
+      width: 90%;
       max-width: 400px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
-    img.phat {
-      max-height: 300px;
-      margin: 20px auto;
+    #phat-img, #lu-huong {
       display: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .cen {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 15px;
       margin-top: 20px;
-      display: none;
-    }
-    .cen img.lu {
-      width: 100px;
+      max-width: 220px;
       height: auto;
     }
-    .incense {
-      position: relative;
-      width: 8px;
-      height: 60px;
-      background: #8B0000;
-      margin-top: -40px;
+    #smoke {
+      width: 30px;
+      height: 80px;
+      background: url('https://i.imgur.com/yZ9NqQh.gif') no-repeat center;
+      background-size: contain;
+      display: none;
+      margin: auto;
+      margin-top: -60px;
     }
-    .smoke {
-      position: absolute;
-      bottom: 60px;
-      left: 50%;
-      width: 6px;
-      height: 60px;
-      background: linear-gradient(white, transparent);
-      opacity: 0.6;
-      animation: rise 3s infinite ease-in-out;
-      transform: translateX(-50%);
-    }
-    @keyframes rise {
-      0% { transform: translate(-50%, 20px) scale(1); opacity: 0.7; }
-      100% { transform: translate(-50%, -80px) scale(0.7); opacity: 0; }
-    }
-    .message {
-      margin-top: 30px;
+    #message {
+      margin-top: 20px;
       font-style: italic;
-      font-size: 1.1rem;
-      color: #6e4b28;
+      color: #6d4c1e;
     }
     .back {
-      margin-top: 40px;
-    }
-    a {
-      color: #805b36;
+      display: block;
+      margin-top: 30px;
+      color: #5b3a1a;
       text-decoration: none;
       font-weight: bold;
     }
@@ -84,73 +55,46 @@
 </head>
 <body>
   <h1>Thắp nhang – Gửi tâm nguyện</h1>
-
-  <label for="bantho">Chọn vị Phật:</label>
-  <select id="bantho" onchange="hienPhat()">
+  <label for="phat">Chọn vị Phật:</label><br>
+  <select id="phat">
     <option value="thichca">Đức Phật Thích Ca</option>
-    <option value="adida">Phật A Di Đà</option>
-    <option value="quanam">Quan Thế Âm Bồ Tát</option>
-  </select>
-
-  <img id="phat" class="phat" src="" alt="Ảnh Phật">
-
-  <textarea id="nguyen" rows="3" placeholder="Nhập tâm nguyện của bạn..."></textarea>
+    <option value="quanam">Quán Thế Âm Bồ Tát</option>
+    <option value="diatang">Địa Tạng Vương Bồ Tát</option>
+  </select><br>
+  <textarea id="nguyen" rows="3" placeholder="Nhập tâm nguyện của bạn..."></textarea><br>
   <button onclick="thapNhang()">Thắp nhang</button>
 
-  <div id="luHuong" class="cen">
-    <div class="incense"><div class="smoke" style="animation-delay: 0s;"></div></div>
-    <div class="incense"><div class="smoke" style="animation-delay: 0.4s;"></div></div>
-    <div class="incense"><div class="smoke" style="animation-delay: 0.8s;"></div></div>
-    <img class="lu" src="https://i.imgur.com/vIK2Jpq.png" alt="Lư hương">
+  <div>
+    <img id="phat-img" src="" alt="Hình Phật">
+    <img id="lu-huong" src="https://i.imgur.com/2OQZ8Oa.png" alt="Lư hương">
+    <div id="smoke"></div>
   </div>
-
-  <div id="msg" class="message"></div>
-
-  <div class="back">
-    <a href="index.html">&larr; Quay về trang chủ</a>
-  </div>
+  <div id="message"></div>
+  <a class="back" href="index.html">← Quay về trang chủ</a>
 
   <script>
-    function hienPhat() {
-      const val = document.getElementById('bantho').value;
-      const img = document.getElementById('phat');
-      if (val === 'thichca') {
-        img.src = 'https://tse1.mm.bing.net/th?id=OIP.LPHUFqeCVvPTsF_K_PMK5AHaKP&pid=Api';
-        img.style.display = 'block';
-      } else if (val === 'adida') {
-        img.src = 'https://tse3.mm.bing.net/th?id=OIP.aowqTwcpbYKTUZLrtVwswwHaN4&pid=Api';
-        img.style.display = 'block';
-      } else if (val === 'quanam') {
-        img.src = 'https://tse1.mm.bing.net/th?id=OIP._LAgRs8kr7bjTt4d-YfS9wHaLH&pid=Api';
-        img.style.display = 'block';
-      } else {
-        img.style.display = 'none';
-      }
-      document.getElementById('luHuong').style.display = 'none';
-      document.getElementById('msg').innerText = '';
-    }
-
     function thapNhang() {
-      const bantho = document.getElementById('bantho').value;
-      const nguyen = document.getElementById('nguyen').value.trim();
-      const msg = document.getElementById('msg');
-      const cauNguyen = [
-        "Hương đã thắp, nguyện lành đã gửi. Tâm an nơi Phật.",
-        "Nam mô A Di Đà Phật. Nguyện này con kính dâng.",
-        "Một nén tâm hương, con gửi lời nguyện lành.",
-        "Lòng thành kính, hương nguyện bay xa.",
-        "Hương trầm quyện khói – Tâm con hướng Phật."
-      ];
-      if (!bantho) {
-        alert('Vui lòng chọn vị Phật.');
-        return;
+      const phat = document.getElementById('phat').value;
+      const nguyen = document.getElementById('nguyen').value;
+      const img = document.getElementById('phat-img');
+      const lu = document.getElementById('lu-huong');
+      const smoke = document.getElementById('smoke');
+      const msg = document.getElementById('message');
+
+      let phatImg = '';
+      if (phat === 'thichca') {
+        phatImg = 'https://i.imgur.com/I7ZqCgI.jpg';
+      } else if (phat === 'quanam') {
+        phatImg = 'https://i.imgur.com/0YPhlGF.jpg';
+      } else {
+        phatImg = 'https://i.imgur.com/p0UuFDj.jpg';
       }
-      if (!nguyen) {
-        alert('Bạn hãy nhập tâm nguyện trước khi thắp nhang.');
-        return;
-      }
-      document.getElementById('luHuong').style.display = 'flex';
-      msg.innerText = cauNguyen[Math.floor(Math.random() * cauNguyen.length)];
+
+      img.src = phatImg;
+      img.style.display = 'block';
+      lu.style.display = 'block';
+      smoke.style.display = 'block';
+      msg.innerText = `Bạn đã thắp nhang gửi tâm nguyện: “${nguyen}” đến ${document.getElementById('phat').selectedOptions[0].text}. Tâm thành sẽ cảm ứng.`;
     }
   </script>
 </body>
