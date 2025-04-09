@@ -2,83 +2,77 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Thắp nhang – Gửi tâm nguyện</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thắp nhang – Gửi tâm nguyện</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #fffaf2, #f5e9d7);
-      color: #5a3921;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #fff8ec, #f5e8d5);
+      color: #5a3b1d;
       text-align: center;
-      padding: 20px;
       margin: 0;
+      padding: 20px;
     }
     h1 {
       font-size: 2rem;
-      margin-bottom: 15px;
-      color: #a05a2c;
+      margin-bottom: 10px;
     }
     select, textarea, button {
       margin: 10px;
-      padding: 12px;
+      padding: 10px;
       font-size: 1rem;
-      border-radius: 6px;
-      border: 1px solid #c9a77d;
-      max-width: 90%;
+      border-radius: 8px;
+      border: 1px solid #d2b48c;
     }
     button {
-      background-color: #d1a56d;
+      background-color: #c19e74;
       color: white;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
     button:hover {
-      background-color: #aa7f4c;
+      background-color: #a8804f;
     }
     .image-area {
       margin-top: 20px;
       position: relative;
     }
     .phat-img {
-      width: 180px;
-      max-width: 100%;
+      width: 160px;
+      height: auto;
       margin-bottom: 10px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     .lu-huong {
-      width: 120px;
+      width: 100px;
+      height: auto;
     }
     .khoi {
       position: absolute;
-      top: 10px;
+      top: 0;
       left: 50%;
-      width: 20px;
-      height: 100px;
-      background: linear-gradient(to top, rgba(160, 160, 160, 0.4), transparent);
-      animation: smoke 3s infinite;
-      opacity: 0;
       transform: translateX(-50%);
-      border-radius: 10px;
+      width: 10px;
+      height: 100px;
+      background: linear-gradient(to top, rgba(100, 100, 100, 0.3), transparent);
+      animation: smoke 3s ease-out forwards;
+      opacity: 0;
     }
     @keyframes smoke {
-      0% { transform: translateX(-50%) translateY(0); opacity: 0.2; }
-      50% { transform: translateX(-50%) translateY(-30px); opacity: 0.6; }
-      100% { transform: translateX(-50%) translateY(-80px); opacity: 0; }
+      0% { transform: translateX(-50%) translateY(0); opacity: 0.3; }
+      50% { transform: translateX(-50%) translateY(-50px); opacity: 0.5; }
+      100% { transform: translateX(-50%) translateY(-100px); opacity: 0; }
     }
     .message {
       margin-top: 20px;
       font-style: italic;
-      color: #6a4b2c;
+      font-size: 1.1rem;
     }
     .back-link {
       margin-top: 30px;
       display: inline-block;
-      color: #5c4023;
+      color: #5a3b1d;
       text-decoration: none;
       font-weight: bold;
-    }
-    .back-link:hover {
-      color: #9e6b3c;
     }
   </style>
 </head>
@@ -89,16 +83,16 @@
   <select id="phat" onchange="changePhat()">
     <option value="thichca">Đức Phật Thích Ca</option>
     <option value="quanam">Quán Thế Âm Bồ Tát</option>
-    <option value="diatang">Địa Tạng Vương Bồ Tát</option>
+    <option value="diaTang">Địa Tạng Vương Bồ Tát</option>
   </select><br>
 
-  <textarea id="nguyenVong" rows="3" placeholder="Nhập tâm nguyện của bạn..."></textarea><br>
+  <textarea id="nguyenVong" rows="3" cols="40" placeholder="Nhập tâm nguyện của bạn..."></textarea><br>
   <button onclick="thapNhang()">Thắp nhang</button>
 
   <div class="image-area" id="imageArea">
-    <img id="phatImg" class="phat-img" src="https://chua.phohien.fr/wp-content/uploads/kcfinder/Phat/buddha-15.jpg">
+    <img id="phatImg" class="phat-img" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Thich_Ca_Mau_Ni_01.jpg">
     <br>
-    <img class="lu-huong" src="https://i.imgur.com/hTksRDr.png">
+    <img class="lu-huong" src="https://i.imgur.com/8WwQdRV.png">
     <div class="khoi" id="khoi"></div>
   </div>
 
@@ -114,13 +108,13 @@
 
       switch (selected) {
         case 'thichca':
-          src = 'https://chua.phohien.fr/wp-content/uploads/kcfinder/Phat/buddha-15.jpg';
+          src = 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Thich_Ca_Mau_Ni_01.jpg';
           break;
         case 'quanam':
-          src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Guanyin_Buddhist_Deity.jpg/300px-Guanyin_Buddhist_Deity.jpg';
+          src = 'https://upload.wikimedia.org/wikipedia/commons/0/0f/Guanyin_Buddhist_Deity.jpg';
           break;
-        case 'diatang':
-          src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ksitigarbha_%E5%9C%B0%E8%97%8F%E8%87%A3.png/300px-Ksitigarbha_%E5%9C%B0%E8%97%8F%E8%87%A3.png';
+        case 'diaTang':
+          src = 'https://upload.wikimedia.org/wikipedia/commons/1/18/Ksitigarbha_%E5%9C%B0%E8%97%8F%E8%87%A3.png';
           break;
       }
 
@@ -133,14 +127,18 @@
       const messageArea = document.getElementById('messageArea');
 
       khoi.style.opacity = '1';
-      setTimeout(() => { khoi.style.opacity = '0'; }, 3000);
+      khoi.style.animation = 'smoke 3s ease-out forwards';
 
-      let thongDiep = '🌸 Tâm nhang đã được dâng lên chư Phật. Nguyện người an vui, tâm ý thanh tịnh. 🌸';
+      let thongDiep = '🙏 Bạn đã thành tâm thắp nhang. Chư Phật chứng giám cho tâm nguyện của bạn.';
       if (nguyen.length > 10) {
-        thongDiep += ' \n“Nguyện cầu với tất cả lòng thành sẽ luôn được cảm ứng.”';
+        thongDiep += ' "Nguyện tâm thanh tịnh, nguyện đời an yên."';
       }
 
       messageArea.textContent = thongDiep;
+
+      setTimeout(() => {
+        khoi.style.opacity = '0';
+      }, 3000);
     }
   </script>
 </body>
