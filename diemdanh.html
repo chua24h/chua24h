@@ -2,89 +2,134 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Điểm danh công đức – Chùa 24h</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Điểm danh công đức</title>
   <style>
     body {
-      margin: 0;
+      background: #fdf8f2;
       font-family: 'Times New Roman', serif;
-      background: linear-gradient(to bottom, #fdfaf3, #efe6d3);
-      color: #3c2f1f;
-      padding: 0;
-    }
-    header {
-      background: #805b36;
-      color: #fff8e6;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background: #fffdf8;
+      color: #3c2e1f;
       padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.07);
-      text-align: center;
+      line-height: 1.6;
     }
-    .container button {
+    h1 {
+      text-align: center;
+      color: #6b4b2c;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
       padding: 12px 28px;
-      font-size: 1.1rem;
-      background: #b0895b;
+      font-size: 1rem;
+      background: #a7895c;
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s;
     }
-    .container button:hover {
-      background: #986e43;
+    button:hover {
+      background: #927148;
     }
-    .quote {
+    .result {
       margin-top: 30px;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: #5a4324;
+      padding: 20px;
+      background: #fff7e6;
+      border: 1px solid #e0d2b5;
+      border-radius: 12px;
     }
-    .return-link {
-      display: inline-block;
+    .back-link {
+      display: block;
+      text-align: center;
       margin-top: 40px;
       font-size: 0.95rem;
-      color: #805b36;
+      color: #5a3c20;
       text-decoration: none;
-    }
-    .return-link:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Điểm danh công đức</h1>
-  </header>
-  <div class="container">
-    <p>Nhấn nút bên dưới để xác nhận hôm nay bạn đã vào chùa:</p>
-    <button onclick="diemDanh()">Hôm nay con đã vào chùa</button>
-    <div class="quote" id="quote"></div>
-    <a href="index.html" class="return-link">← Trở về trang chủ</a>
-  </div>
+
+  <h1>Điểm danh công đức hôm nay</h1>
+
+  <button onclick="diemDanh()">Hôm nay con đã vào chùa</button>
+
+  <div class="result" id="result"></div>
+
+  <a class="back-link" href="index.html">← Trở về Trang chủ</a>
 
   <script>
-    const quotes = [
-      "Tâm an là phúc, lòng tĩnh là đạo.",
-      "Một niệm tịnh, muôn điều lành sinh.",
-      "Đi chùa mỗi ngày, gieo trồng công đức.",
-      "An trú trong hiện tại, lìa xa lo lắng.",
-      "Chánh niệm là ánh sáng soi rọi tâm hồn."
+    const ngayTotXau = [
+      "Hôm nay là ngày tốt để tu tâm dưỡng tính.",
+      "Ngày đẹp để gieo thiện duyên, giữ tâm an.",
+      "Hôm nay tâm động, nên thiền định và tĩnh lặng.",
+      "Ngày có duyên lành, nên làm việc thiện.",
+      "Hôm nay tránh nóng giận, giữ lòng từ bi.",
+      "Ngày này hợp tụng kinh niệm Phật, tránh thị phi."
     ];
-    function diemDanh() {
-      const quote = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById('quote').textContent = "🌸 " + quote;
+
+    const keNgay = [
+      "Tâm tịnh như nước lặng.",
+      "Giữ lòng hiền, phước đức tự sinh.",
+      "Một niệm thiện, vạn ác tiêu tan.",
+      "Công đức nhỏ, tích lại thành lớn.",
+      "Tâm sáng thì đường sáng.",
+      "Buông xả là hạnh phúc.",
+      "Hành thiện không cần ai biết."
+    ];
+
+    function getDateString(d) {
+      return d.toISOString().split('T')[0];
     }
+
+    function diemDanh() {
+      const now = new Date();
+      const todayStr = getDateString(now);
+      const gio = now.toLocaleTimeString('vi-VN');
+
+      const lastDateStr = localStorage.getItem('diemdanh-ngay');
+      let streak = parseInt(localStorage.getItem('diemdanh-streak')) || 0;
+
+      if (lastDateStr) {
+        const lastDate = new Date(lastDateStr);
+        const diff = Math.floor((now - lastDate) / (1000 * 60 * 60 * 24));
+
+        if (diff === 1) {
+          streak += 1;
+        } else if (diff > 1) {
+          streak = 1; // Reset chuỗi
+        }
+      } else {
+        streak = 1;
+      }
+
+      localStorage.setItem('diemdanh-ngay', todayStr);
+      localStorage.setItem('diemdanh-gio', gio);
+      localStorage.setItem('diemdanh-streak', streak);
+
+      const totxau = ngayTotXau[Math.floor(Math.random() * ngayTotXau.length)];
+      const ke = keNgay[Math.floor(Math.random() * keNgay.length)];
+
+      document.getElementById("result").innerHTML = `
+        <p>⏰ Giờ điểm danh: <strong>${gio}</strong> – Ngày: <strong>${todayStr}</strong></p>
+        <p>📜 ${totxau}</p>
+        <p>💡 Câu kệ hôm nay: <em>"${ke}"</em></p>
+        <p>🔥 Chuỗi điểm danh liên tục: <strong>${streak} ngày</strong></p>
+      `;
+    }
+
+    window.onload = () => {
+      const ngay = localStorage.getItem('diemdanh-ngay');
+      const gio = localStorage.getItem('diemdanh-gio');
+      const streak = localStorage.getItem('diemdanh-streak') || 0;
+
+      if (ngay && gio) {
+        document.getElementById("result").innerHTML = `
+          <p>⏰ Lần gần nhất điểm danh: <strong>${gio}</strong> – Ngày: <strong>${ngay}</strong></p>
+          <p>🔥 Chuỗi điểm danh hiện tại: <strong>${streak} ngày</strong></p>
+          <p>🙏 Hãy tiếp tục duy trì công đức mỗi ngày.</p>
+        `;
+      }
+    };
   </script>
 </body>
 </html>
