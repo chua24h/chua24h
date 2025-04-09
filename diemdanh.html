@@ -81,41 +81,48 @@
       return d.toISOString().split('T')[0];
     }
 
-    function diemDanh() {
-      const now = new Date();
-      const todayStr = getDateString(now);
-      const gio = now.toLocaleTimeString('vi-VN');
+   function diemDanh() {
+  const ten = localStorage.getItem("tenPhapDanh");
+  if (!ten) {
+    alert("Vui lòng quay lại trang chủ và nhập Họ tên hoặc Pháp danh trước khi điểm danh.");
+    return;
+  }
 
-      const lastDateStr = localStorage.getItem('diemdanh-ngay');
-      let streak = parseInt(localStorage.getItem('diemdanh-streak')) || 0;
+  const now = new Date();
+  const todayStr = getDateString(now);
+  const gio = now.toLocaleTimeString('vi-VN');
 
-      if (lastDateStr) {
-        const lastDate = new Date(lastDateStr);
-        const diff = Math.floor((now - lastDate) / (1000 * 60 * 60 * 24));
+  const lastDateStr = localStorage.getItem('diemdanh-ngay');
+  let streak = parseInt(localStorage.getItem('diemdanh-streak')) || 0;
 
-        if (diff === 1) {
-          streak += 1;
-        } else if (diff > 1) {
-          streak = 1; // Reset chuỗi
-        }
-      } else {
-        streak = 1;
-      }
+  if (lastDateStr) {
+    const lastDate = new Date(lastDateStr);
+    const diff = Math.floor((now - lastDate) / (1000 * 60 * 60 * 24));
 
-      localStorage.setItem('diemdanh-ngay', todayStr);
-      localStorage.setItem('diemdanh-gio', gio);
-      localStorage.setItem('diemdanh-streak', streak);
-
-      const totxau = ngayTotXau[Math.floor(Math.random() * ngayTotXau.length)];
-      const ke = keNgay[Math.floor(Math.random() * keNgay.length)];
-
-      document.getElementById("result").innerHTML = `
-        <p>⏰ Giờ điểm danh: <strong>${gio}</strong> – Ngày: <strong>${todayStr}</strong></p>
-        <p>📜 ${totxau}</p>
-        <p>💡 Câu kệ hôm nay: <em>"${ke}"</em></p>
-        <p>🔥 Chuỗi điểm danh liên tục: <strong>${streak} ngày</strong></p>
-      `;
+    if (diff === 1) {
+      streak += 1;
+    } else if (diff > 1) {
+      streak = 1;
     }
+  } else {
+    streak = 1;
+  }
+
+  localStorage.setItem('diemdanh-ngay', todayStr);
+  localStorage.setItem('diemdanh-gio', gio);
+  localStorage.setItem('diemdanh-streak', streak);
+
+  const totxau = ngayTotXau[Math.floor(Math.random() * ngayTotXau.length)];
+  const ke = keNgay[Math.floor(Math.random() * keNgay.length)];
+
+  document.getElementById("result").innerHTML = `
+    <p>🙏 Pháp danh: <strong>${ten}</strong></p>
+    <p>⏰ Giờ điểm danh: <strong>${gio}</strong> – Ngày: <strong>${todayStr}</strong></p>
+    <p>📜 ${totxau}</p>
+    <p>💡 Câu kệ hôm nay: <em>"${ke}"</em></p>
+    <p>🔥 Chuỗi điểm danh liên tục: <strong>${streak} ngày</strong></p>
+  `;
+}
 
     window.onload = () => {
       const ngay = localStorage.getItem('diemdanh-ngay');
