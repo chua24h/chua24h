@@ -3,57 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chùa 24h – Về chùa không cần rời nhà</title>
+  <title>Chùa 24h – Chùa không đóng cửa</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #f5f1e7, #e8dbc2);
-      color: #3e2b14;
+      font-family: 'Times New Roman', serif;
+      background: linear-gradient(to bottom, #f8f4ec, #efe8da);
+      color: #3e2f1f;
     }
     header {
-      background: #9c6b30;
-      color: white;
-      padding: 20px;
+      background: #7c5735;
+      color: #fff8e8;
+      padding: 40px 20px;
       text-align: center;
+      border-bottom: 4px solid #d6b88f;
     }
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.7rem;
+      letter-spacing: 1px;
     }
     header p {
-      margin: 5px 0 0;
+      margin: 10px 0 0;
       font-style: italic;
+      font-size: 1.1rem;
     }
     main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      padding: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+      padding: 50px 30px;
     }
     .module {
-      background: #fffefc;
-      border: 1px solid #d1bfa3;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      background: #fffdf8;
+      border: 1px solid #e0caa2;
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
     .module:hover {
-      transform: translateY(-5px);
-      background: #fffbe9;
+      transform: translateY(-6px);
+      background: #fdf6e6;
     }
     .module h2 {
       margin-top: 0;
-      color: #7a5523;
+      font-size: 1.3rem;
+      color: #6b4c28;
+    }
+    .module p {
+      margin: 6px 0 0;
+      font-size: 0.95rem;
+      color: #4e3a22;
     }
     footer {
       text-align: center;
       font-size: 0.9rem;
-      padding: 20px;
-      background: #f0e8d8;
-      margin-top: 40px;
+      padding: 30px;
+      background: #f5ecda;
+      color: #5c4324;
     }
   </style>
 </head>
@@ -63,41 +74,41 @@
     <p>“Chùa không đóng cửa” – “Về chùa không cần rời nhà” – “Tâm an 24/7”</p>
   </header>
   <main>
-    <div class="module" onclick="alert('Hôm nay bạn đã điểm danh vào chùa')">
-      <h2>Điểm danh công đức</h2>
-      <p>“Hôm nay con đã vào chùa” – tích công đức mỗi ngày</p>
-    </div>
-    <div class="module" onclick="alert('Bạn đang bốc xăm và nhận lời Phật dạy')">
-      <h2>Xăm – Gieo quẻ – Lời Phật</h2>
-      <p>Gieo quẻ – Câu nói đạo lý – Lời giải thích</p>
-    </div>
-    <div class="module" onclick="alert('Bạn đang thắp nhang và gửi tâm nguyện')">
-      <h2>Thắp nhang – Tâm nguyện</h2>
-      <p>Gửi tâm linh đến điện thờ – chọn ban thờ</p>
-    </div>
-    <div class="module" onclick="alert('Bạn đang tụng kinh – nghe pháp thoại')">
-      <h2>Pháp thoại – Kệ tụng</h2>
-      <p>Audio clip ngắn – Tâm an mỗi ngày</p>
-    </div>
-    <div class="module" onclick="alert('Công đức và huy hiệu đang chờ bạn')">
-      <h2>Công đức & Huy hiệu</h2>
-      <p>Gắn bó 7 – 21 – 108 ngày – Bồ Tát tập sự</p>
-    </div>
-    <div class="module" onclick="alert('Bạn đang gửi tâm thư đến chùa')">
-      <h2>Lá thư cho Phật</h2>
-      <p>Tâm sự – Trút bầu – Nhận phản hồi đạo lý</p>
-    </div>
-    <div class="module" onclick="alert('Hướng dẫn thiền 1 phút')">
-      <h2>Thiền 1 phút</h2>
-      <p>Lời dẫn thiền – Nhạc – Dành cho người bận rộn</p>
-    </div>
-    <div class="module" onclick="alert('Bạn đang xem lại hành trình tâm linh')">
-      <h2>Nhật ký chùa</h2>
-      <p>Ghi chú – Theo dõi công đức – Tâm an mỗi ngày</p>
-    </div>
+    <a href="modules/diemdanh.html" class="module">
+      <h2>1. Điểm danh công đức</h2>
+      <p>Vào chùa mỗi ngày – Tích lũy công đức – Duy trì chuỗi hành trì</p>
+    </a>
+    <a href="modules/xam.html" class="module">
+      <h2>2. Xăm – Gieo quẻ – Lời Phật</h2>
+      <p>Xin xăm – Nhận quẻ – Lời dạy từ bi & giải nghĩa</p>
+    </a>
+    <a href="modules/nhang.html" class="module">
+      <h2>3. Thắp nhang – Tâm nguyện</h2>
+      <p>Thắp nhang số hóa – Gửi tâm nguyện đến các ban thờ</p>
+    </a>
+    <a href="modules/phongsinh.html" class="module">
+      <h2>4. Phóng sinh online</h2>
+      <p>Thả cá – Gieo tâm từ bi – Tạo công đức nhẹ nhàng</p>
+    </a>
+    <a href="modules/phapthoai.html" class="module">
+      <h2>5. Tụng kinh – Nghe pháp thoại</h2>
+      <p>Nghe kệ ngắn – Pháp thoại 3 phút – Lời dạy an tâm</p>
+    </a>
+    <a href="modules/thien.html" class="module">
+      <h2>6. Thiền 1 phút</h2>
+      <p>Hướng dẫn thiền – Thở đều – Dành cho người bận rộn</p>
+    </a>
+    <a href="modules/huyhieu.html" class="module">
+      <h2>7. Công đức & Huy hiệu</h2>
+      <p>Ghi nhận hành trì – Thành tựu 7-21-108 ngày</p>
+    </a>
+    <a href="modules/nhatky.html" class="module">
+      <h2>8. Nhật ký chùa</h2>
+      <p>Lưu giữ hành trình tâm linh – Theo dõi mỗi ngày</p>
+    </a>
   </main>
   <footer>
-    &copy; 2025 Chùa 24h. Về chùa không cần rời nhà.
+    &copy; 2025 Chùa 24h. Chùa không đóng cửa – Tâm an 24/7.
   </footer>
 </body>
 </html>
