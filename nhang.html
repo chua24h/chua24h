@@ -1,14 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nhang – Chùa 24h</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thắp nhang – Tâm nguyện</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background: linear-gradient(to top, #f9f4e8, #fffefc);
+      color: #3c2f1f;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #805b36;
+      color: #fff8e6;
+      padding: 20px;
+    }
+    main {
+      padding: 30px;
+    }
+    textarea, select, button {
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 10px;
+      margin-top: 10px;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    .success {
+      margin-top: 15px;
+      color: green;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    a.back {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      background: #6b4b27;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
-<body style="font-family:serif; background:#fdfaf4; color:#3c2f1f; padding:40px;">
-  <h1>Chùa 24h – Nhang</h1>
-  <p>[Nội dung module: nhang]</p>
-  <p><a href="index.html" style="color:#6b4b27;">← Trở về Trang Chủ</a></p>
+<body>
+  <header>
+    <h1>Thắp nhang – Gửi tâm nguyện</h1>
+  </header>
+  <main>
+    <p>Chọn nơi bạn muốn gửi tâm nguyện:</p>
+    <select id="bantho">
+      <option value="Phật">Phật</option>
+      <option value="Quan Âm">Quan Âm</option>
+      <option value="Cha mẹ">Cha mẹ</option>
+      <option value="Tổ tiên">Tổ tiên</option>
+      <option value="Khác">Khác</option>
+    </select>
+
+    <p>Viết tâm nguyện của bạn:</p>
+    <textarea id="tamnuyen" rows="6" placeholder="Con xin nguyện..."></textarea><br>
+
+    <button onclick="guiTamNguyen()">🙏 Thắp nhang & Gửi nguyện</button>
+
+    <div class="success" id="ketqua"></div>
+
+    <a href="index.html" class="back">← Về trang chủ</a>
+  </main>
+  <footer>
+    Chùa 24h – Tâm an mỗi ngày
+  </footer>
+
+  <script>
+    function guiTamNguyen() {
+      const tamnguyen = document.getElementById('tamnuyen').value.trim();
+      const bantho = document.getElementById('bantho').value;
+      const ketqua = document.getElementById('ketqua');
+
+      if (tamnguyen.length === 0) {
+        ketqua.innerText = '🙏 Bạn chưa viết gì cả.';
+        return;
+      }
+
+      // Lưu tạm tâm nguyện vào localStorage (giả lập điện thờ)
+      const danhSach = JSON.parse(localStorage.getItem('dienThoTamNguyen') || '[]');
+      danhSach.push({ tamnguyen, bantho, time: new Date().toLocaleString() });
+      localStorage.setItem('dienThoTamNguyen', JSON.stringify(danhSach));
+
+      ketqua.innerText = `✨ Tâm nguyện đã được gửi đến ${bantho}.`;
+      document.getElementById('tamnuyen').value = '';
+    }
+  </script>
 </body>
 </html>
