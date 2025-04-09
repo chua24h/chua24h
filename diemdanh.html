@@ -1,14 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diemdanh – Chùa 24h</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Điểm danh công đức – Chùa 24h</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', serif;
+      background: linear-gradient(to bottom, #fdfaf3, #efe6d3);
+      color: #3c2f1f;
+      padding: 0;
+    }
+    header {
+      background: #805b36;
+      color: #fff8e6;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fffdf8;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+    .container button {
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      background: #b0895b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .container button:hover {
+      background: #986e43;
+    }
+    .quote {
+      margin-top: 30px;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #5a4324;
+    }
+    .return-link {
+      display: inline-block;
+      margin-top: 40px;
+      font-size: 0.95rem;
+      color: #805b36;
+      text-decoration: none;
+    }
+    .return-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-<body style="font-family:serif; background:#fdfaf4; color:#3c2f1f; padding:40px;">
-  <h1>Chùa 24h – Diemdanh</h1>
-  <p>[Nội dung module: diemdanh]</p>
-  <p><a href="index.html" style="color:#6b4b27;">← Trở về Trang Chủ</a></p>
+<body>
+  <header>
+    <h1>Điểm danh công đức</h1>
+  </header>
+  <div class="container">
+    <p>Nhấn nút bên dưới để xác nhận hôm nay bạn đã vào chùa:</p>
+    <button onclick="diemDanh()">Hôm nay con đã vào chùa</button>
+    <div class="quote" id="quote"></div>
+    <a href="index.html" class="return-link">← Trở về trang chủ</a>
+  </div>
+
+  <script>
+    const quotes = [
+      "Tâm an là phúc, lòng tĩnh là đạo.",
+      "Một niệm tịnh, muôn điều lành sinh.",
+      "Đi chùa mỗi ngày, gieo trồng công đức.",
+      "An trú trong hiện tại, lìa xa lo lắng.",
+      "Chánh niệm là ánh sáng soi rọi tâm hồn."
+    ];
+    function diemDanh() {
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('quote').textContent = "🌸 " + quote;
+    }
+  </script>
 </body>
 </html>
