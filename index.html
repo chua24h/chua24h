@@ -1,1 +1,125 @@
 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chùa 24h – Cổng Chùa</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f5f1e7, #e8dbc2);
+      overflow: hidden;
+    }
+    .gate-screen {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-image: url('https://i.imgur.com/PMbGNRR.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .gate-screen h1 {
+      color: #5b2c06;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px #fff;
+    }
+    .gate-screen button {
+      padding: 12px 24px;
+      background-color: #b88a44;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .gate-screen button:hover {
+      background-color: #9d6c2a;
+    }
+    .main-temple {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-areas:
+        "left center right"
+        "shop back .";
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 3fr 1fr;
+      background: url('https://i.imgur.com/0RYGvj3.jpg') no-repeat center center;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+      gap: 10px;
+    }
+    .zone {
+      background: rgba(0, 0, 0, 0.4);
+      margin: 10px;
+      padding: 20px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .zone:hover {
+      transform: scale(1.05);
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .zone h2 {
+      margin-bottom: 10px;
+      color: #ffe9ad;
+    }
+    .left-zone { grid-area: left; }
+    .center-zone { grid-area: center; }
+    .right-zone { grid-area: right; }
+    .back-zone { grid-area: back; }
+    .shop-zone { grid-area: shop; }
+  </style>
+</head>
+<body>
+  <div class="gate-screen" id="gate">
+    <h1>Chào mừng đến với Chùa 24h</h1>
+    <button onclick="enterTemple()">Vào Chùa</button>
+  </div>
+
+  <div class="main-temple" id="temple">
+    <div class="zone left-zone" onclick="alert('Bạn vào khu Thắp nhang – Gửi tâm nguyện')">
+      <h2>Thắp nhang</h2>
+      <p>Gửi tâm nguyện</p>
+    </div>
+    <div class="zone center-zone" onclick="alert('Bạn vào Chính điện – Tụng kệ – Điểm danh')">
+      <h2>Chính điện</h2>
+      <p>Điểm danh – Tụng kệ</p>
+    </div>
+    <div class="zone right-zone" onclick="alert('Bạn vào khu Gieo quẻ – Lời Phật – Thiền')">
+      <h2>Gieo quẻ</h2>
+      <p>Nhận lời Phật – Thiền nhanh</p>
+    </div>
+    <div class="zone back-zone" onclick="alert('Bạn bước ra Hậu viên – Khu vực Phóng sinh')">
+      <h2>Hậu viên</h2>
+      <p>Phóng sinh – An lành</p>
+    </div>
+    <div class="zone shop-zone" onclick="alert('Bạn đến gian Bảo Vật Linh Tài – Mua vật phẩm phong thủy')">
+      <h2>Bảo Vật Linh Tài</h2>
+      <p>Vật phẩm – Trợ duyên – Trừ tà</p>
+    </div>
+  </div>
+
+  <script>
+    function enterTemple() {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('temple').style.display = 'grid';
+    }
+  </script>
+</body>
+</html>
