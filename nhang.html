@@ -2,100 +2,126 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thắp nhang – Tâm nguyện</title>
+  <title>Thắp nhang – Tâm nguyện | Chùa 24h</title>
   <style>
     body {
+      background: linear-gradient(to bottom, #f7f4ec, #efe6d3);
       font-family: 'Times New Roman', serif;
-      background: linear-gradient(to top, #f9f4e8, #fffefc);
       color: #3c2f1f;
-      margin: 0;
-      padding: 0;
       text-align: center;
-    }
-    header {
-      background-color: #805b36;
-      color: #fff8e6;
-      padding: 20px;
-    }
-    main {
       padding: 30px;
     }
-    textarea, select, button {
-      font-family: inherit;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    select, textarea, button {
       font-size: 1rem;
+      margin: 10px auto;
       padding: 10px;
-      margin-top: 10px;
-      width: 90%;
-      max-width: 500px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-    }
-    .success {
-      margin-top: 15px;
-      color: green;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #777;
-    }
-    a.back {
-      display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      background: #6b4b27;
-      color: #fff;
-      padding: 10px 20px;
       border-radius: 8px;
+      border: 1px solid #cbb994;
+      display: block;
+      width: 80%;
+      max-width: 400px;
+    }
+    img {
+      max-height: 200px;
+      margin: 20px auto;
+      display: none;
+    }
+    .cen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .cen img {
+      max-height: 150px;
+    }
+    .smoke {
+      width: 10px;
+      height: 60px;
+      background: linear-gradient(white, transparent);
+      opacity: 0.6;
+      animation: rise 3s infinite ease-in-out;
+      margin: 0 auto;
+    }
+    @keyframes rise {
+      0% { transform: translateY(20px) scale(1); opacity: 0.7; }
+      100% { transform: translateY(-80px) scale(0.7); opacity: 0; }
+    }
+    .back {
+      margin-top: 40px;
+    }
+    a {
+      color: #805b36;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Thắp nhang – Gửi tâm nguyện</h1>
-  </header>
-  <main>
-    <p>Chọn nơi bạn muốn gửi tâm nguyện:</p>
-    <select id="bantho">
-      <option value="Phật">Phật</option>
-      <option value="Quan Âm">Quan Âm</option>
-      <option value="Cha mẹ">Cha mẹ</option>
-      <option value="Tổ tiên">Tổ tiên</option>
-      <option value="Khác">Khác</option>
-    </select>
+  <h1>Thắp nhang – Gửi tâm nguyện</h1>
 
-    <p>Viết tâm nguyện của bạn:</p>
-    <textarea id="tamnuyen" rows="6" placeholder="Con xin nguyện..."></textarea><br>
+  <label for="bantho">Chọn vị Phật:</label>
+  <select id="bantho" onchange="hienPhat()">
+    <option value="">-- Chọn --</option>
+    <option value="thichca">Đức Phật Thích Ca</option>
+    <option value="adida">Phật A Di Đà</option>
+    <option value="quanam">Quan Thế Âm Bồ Tát</option>
+  </select>
 
-    <button onclick="guiTamNguyen()">🙏 Thắp nhang & Gửi nguyện</button>
+  <img id="phat" src="" alt="Ảnh Phật">
 
-    <div class="success" id="ketqua"></div>
+  <textarea id="nguyen" rows="3" placeholder="Nhập tâm nguyện của bạn..."></textarea>
+  <button onclick="thapNhang()">Thắp nhang</button>
 
-    <a href="index.html" class="back">← Về trang chủ</a>
-  </main>
-  <footer>
-    Chùa 24h – Tâm an mỗi ngày
-  </footer>
+  <div id="luHuong" class="cen" style="display: none;">
+    <img src="https://i.imgur.com/BF0LST1.png" alt="Lư hương">
+    <div>
+      <div class="smoke"></div>
+      <div class="smoke" style="animation-delay: 0.5s;"></div>
+      <div class="smoke" style="animation-delay: 1s;"></div>
+    </div>
+  </div>
+
+  <div class="back">
+    <a href="index.html">&larr; Quay về trang chủ</a>
+  </div>
 
   <script>
-    function guiTamNguyen() {
-      const tamnguyen = document.getElementById('tamnuyen').value.trim();
-      const bantho = document.getElementById('bantho').value;
-      const ketqua = document.getElementById('ketqua');
+    function hienPhat() {
+      const val = document.getElementById('bantho').value;
+      const img = document.getElementById('phat');
+      if (val === 'thichca') {
+        img.src = 'https://upload.wikimedia.org/wikipedia/commons/5/5d/Gautama_Buddha_%28golden_statue%29.jpg';
+        img.style.display = 'block';
+      } else if (val === 'adida') {
+        img.src = 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Amitabha_Buddha_Statue.jpg';
+        img.style.display = 'block';
+      } else if (val === 'quanam') {
+        img.src = 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Guanyin_Buddha_Statue.jpg';
+        img.style.display = 'block';
+      } else {
+        img.style.display = 'none';
+      }
+      document.getElementById('luHuong').style.display = 'none';
+    }
 
-      if (tamnguyen.length === 0) {
-        ketqua.innerText = '🙏 Bạn chưa viết gì cả.';
+    function thapNhang() {
+      const bantho = document.getElementById('bantho').value;
+      const nguyen = document.getElementById('nguyen').value.trim();
+      if (!bantho) {
+        alert('Vui lòng chọn vị Phật bạn muốn thắp nhang.');
         return;
       }
-
-      // Lưu tạm tâm nguyện vào localStorage (giả lập điện thờ)
-      const danhSach = JSON.parse(localStorage.getItem('dienThoTamNguyen') || '[]');
-      danhSach.push({ tamnguyen, bantho, time: new Date().toLocaleString() });
-      localStorage.setItem('dienThoTamNguyen', JSON.stringify(danhSach));
-
-      ketqua.innerText = `✨ Tâm nguyện đã được gửi đến ${bantho}.`;
-      document.getElementById('tamnuyen').value = '';
+      if (!nguyen) {
+        alert('Bạn hãy nhập tâm nguyện trước khi thắp nhang.');
+        return;
+      }
+      document.getElementById('luHuong').style.display = 'flex';
     }
   </script>
 </body>
