@@ -3,58 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title>Thắp nhang – Gửi tâm nguyện</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: 'Times New Roman', serif;
-      background: linear-gradient(to bottom, #fef9f3, #f4e9d9);
-      color: #5c4023;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fffaf2, #f5e9d7);
+      color: #5a3921;
       text-align: center;
-      padding: 30px;
+      padding: 20px;
+      margin: 0;
     }
     h1 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #a05a2c;
     }
     select, textarea, button {
       margin: 10px;
-      padding: 10px;
+      padding: 12px;
       font-size: 1rem;
       border-radius: 6px;
-      border: 1px solid #bca789;
+      border: 1px solid #c9a77d;
+      max-width: 90%;
     }
     button {
-      background-color: #c19e74;
+      background-color: #d1a56d;
       color: white;
       cursor: pointer;
     }
     button:hover {
-      background-color: #9c7b55;
+      background-color: #aa7f4c;
     }
     .image-area {
       margin-top: 20px;
       position: relative;
     }
     .phat-img {
-      width: 160px;
+      width: 180px;
+      max-width: 100%;
       margin-bottom: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     .lu-huong {
-      width: 100px;
+      width: 120px;
     }
     .khoi {
       position: absolute;
       top: 10px;
       left: 50%;
-      width: 10px;
-      height: 80px;
-      background: linear-gradient(to top, rgba(100, 100, 100, 0.2), transparent);
+      width: 20px;
+      height: 100px;
+      background: linear-gradient(to top, rgba(160, 160, 160, 0.4), transparent);
       animation: smoke 3s infinite;
       opacity: 0;
+      transform: translateX(-50%);
+      border-radius: 10px;
     }
     @keyframes smoke {
-      0% { transform: translate(-50%, 0) scaleY(1); opacity: 0.2; }
-      50% { transform: translate(-50%, -40px) scaleY(1.2); opacity: 0.4; }
-      100% { transform: translate(-50%, -80px) scaleY(1.4); opacity: 0; }
+      0% { transform: translateX(-50%) translateY(0); opacity: 0.2; }
+      50% { transform: translateX(-50%) translateY(-30px); opacity: 0.6; }
+      100% { transform: translateX(-50%) translateY(-80px); opacity: 0; }
     }
     .message {
       margin-top: 20px;
@@ -68,6 +77,9 @@
       text-decoration: none;
       font-weight: bold;
     }
+    .back-link:hover {
+      color: #9e6b3c;
+    }
   </style>
 </head>
 <body>
@@ -77,7 +89,7 @@
   <select id="phat" onchange="changePhat()">
     <option value="thichca">Đức Phật Thích Ca</option>
     <option value="quanam">Quán Thế Âm Bồ Tát</option>
-    <option value="diaTang">Địa Tạng Vương Bồ Tát</option>
+    <option value="diatang">Địa Tạng Vương Bồ Tát</option>
   </select><br>
 
   <textarea id="nguyenVong" rows="3" placeholder="Nhập tâm nguyện của bạn..."></textarea><br>
@@ -85,7 +97,8 @@
 
   <div class="image-area" id="imageArea">
     <img id="phatImg" class="phat-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Thich_Ca_Mau_Ni_01.jpg/300px-Thich_Ca_Mau_Ni_01.jpg">
-    <img class="lu-huong" src="https://i.imgur.com/MHNiKjA.png">
+    <br>
+    <img class="lu-huong" src="https://i.imgur.com/hTksRDr.png">
     <div class="khoi" id="khoi"></div>
   </div>
 
@@ -106,7 +119,7 @@
         case 'quanam':
           src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Guanyin_Buddhist_Deity.jpg/300px-Guanyin_Buddhist_Deity.jpg';
           break;
-        case 'diaTang':
+        case 'diatang':
           src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ksitigarbha_%E5%9C%B0%E8%97%8F%E8%87%A3.png/300px-Ksitigarbha_%E5%9C%B0%E8%97%8F%E8%87%A3.png';
           break;
       }
@@ -122,9 +135,9 @@
       khoi.style.opacity = '1';
       setTimeout(() => { khoi.style.opacity = '0'; }, 3000);
 
-      let thongDiep = 'Tâm nguyện đã được gửi đến chư Phật. Nguyện bạn thân tâm an lạc.';
+      let thongDiep = '🌸 Tâm nhang đã được dâng lên chư Phật. Nguyện người an vui, tâm ý thanh tịnh. 🌸';
       if (nguyen.length > 10) {
-        thongDiep += ' “Mọi thiện nguyện sẽ được gieo lành nếu khởi từ chân tâm.”';
+        thongDiep += ' \n“Nguyện cầu với tất cả lòng thành sẽ luôn được cảm ứng.”';
       }
 
       messageArea.textContent = thongDiep;
