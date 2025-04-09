@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Điểm danh công đức</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background: #fdf6e7;
+      color: #3c2f1f;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      background: #805b36;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #a66c3b;
+    }
+    #message, #count {
+      margin-top: 30px;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Điểm danh công đức</h1>
+  <p>Nhấn vào nút dưới đây để ghi nhận hôm nay bạn đã vào chùa.</p>
+  <button onclick="diemDanh()">Hôm nay con đã vào chùa</button>
+  <div id="message"></div>
+  <div id="count"></div>
+
+  <script>
+    function diemDanh() {
+      const today = new Date().toISOString().split('T')[0];
+      let diary = JSON.parse(localStorage.getItem('diemdanh')) || [];
+      if (!diary.includes(today)) {
+        diary.push(today);
+        localStorage.setItem('diemdanh', JSON.stringify(diary));
+        document.getElementById('message').innerText = '🪷 Hôm nay bạn đã điểm danh công đức.';
+      } else {
+        document.getElementById('message').innerText = '📿 Bạn đã điểm danh hôm nay rồi.';
+      }
+      document.getElementById('count').innerText = 'Số ngày bạn đã vào chùa: ' + diary.length;
+    }
+
+    window.onload = diemDanh;
+  </script>
+</body>
+</html>

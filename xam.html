@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Gieo quẻ – Lời Phật</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background: #fdf6e7;
+      color: #3c2f1f;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      background: #805b36;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #a66c3b;
+    }
+    .quẻ {
+      margin-top: 30px;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gieo quẻ – Lời Phật</h1>
+  <p>Hôm nay bạn nhận được điều gì?</p>
+  <button onclick="gieoQue()">Gieo quẻ</button>
+  <div class="quẻ" id="ketqua"></div>
+
+  <script>
+    const queList = [
+      { ten: "Quẻ An Lạc", loi: "Tâm an thì vạn sự an", giai: "Buông xả lo âu, giữ tâm thanh tịnh." },
+      { ten: "Quẻ Từ Bi", loi: "Từ bi là cội nguồn giác ngộ", giai: "Tha thứ và yêu thương đem lại hạnh phúc." },
+      { ten: "Quẻ Trí Tuệ", loi: "Thắp sáng trí tuệ là soi đường", giai: "Học và hành để hiểu sâu đạo lý." },
+      { ten: "Quẻ Kiên Định", loi: "Giữ tâm vững như núi", giai: "Dù sóng gió, lòng không lay động." }
+    ];
+
+    function gieoQue() {
+      const q = queList[Math.floor(Math.random() * queList.length)];
+      document.getElementById('ketqua').innerHTML = `
+        <h3>${q.ten}</h3>
+        <p><em>“${q.loi}”</em></p>
+        <p>${q.giai}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
