@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Thắp nhang – Gửi tâm nguyện</title>
   <style>
     body {
@@ -17,7 +17,7 @@
       font-size: 2rem;
       margin-bottom: 10px;
     }
-    select, textarea, button {
+    select, textarea {
       margin: 10px;
       padding: 10px;
       font-size: 1rem;
@@ -25,6 +25,11 @@
       border: 1px solid #d2b48c;
     }
     button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
       background-color: #c19e74;
       color: white;
       cursor: pointer;
@@ -38,28 +43,31 @@
       position: relative;
     }
     .phat-img {
-      width: 160px;
+      width: 180px;
       height: auto;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     .lu-huong {
       width: 100px;
       height: auto;
+      margin-bottom: 10px;
     }
     .khoi {
       position: absolute;
-      top: 0;
+      top: 45%;
       left: 50%;
       transform: translateX(-50%);
-      width: 10px;
+      width: 15px;
       height: 100px;
-      background: linear-gradient(to top, rgba(100, 100, 100, 0.3), transparent);
+      background: radial-gradient(ellipse at center, rgba(120,120,120,0.3), transparent);
       animation: smoke 3s ease-out forwards;
       opacity: 0;
+      border-radius: 50%;
+      z-index: 10;
     }
     @keyframes smoke {
-      0% { transform: translateX(-50%) translateY(0); opacity: 0.3; }
-      50% { transform: translateX(-50%) translateY(-50px); opacity: 0.5; }
+      0% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+      50% { transform: translateX(-50%) translateY(-50px); opacity: 0.6; }
       100% { transform: translateX(-50%) translateY(-100px); opacity: 0; }
     }
     .message {
@@ -84,17 +92,17 @@
     <option value="thichca">Đức Phật Thích Ca</option>
     <option value="quanam">Quán Thế Âm Bồ Tát</option>
     <option value="diaTang">Địa Tạng Vương Bồ Tát</option>
-  </select><br>
-
-  <textarea id="nguyenVong" rows="3" cols="40" placeholder="Nhập tâm nguyện của bạn..."></textarea><br>
-  <button onclick="thapNhang()">Thắp nhang</button>
+  </select><br/>
 
   <div class="image-area" id="imageArea">
-    <img id="phatImg" class="phat-img" src="https://nhangsala.com/wp-content/uploads/2017/02/phat-thich-ca.png">
+    <img id="phatImg" class="phat-img" src="https://nhangsala.com/wp-content/uploads/2017/02/phat-thich-ca.png" alt="Phật">
     <br>
-    <img class="lu-huong" src="https://png.pngtree.com/png-clipart/20201225/ourmid/pngtree-hand-drawn-cartoon-element-illustration-incense-burner-png-image_2625969.jpg">
+    <img class="lu-huong" src="https://i.imgur.com/NXef9MC.png" alt="Lư hương"> <!-- Lư hương mới đẹp -->
     <div class="khoi" id="khoi"></div>
   </div>
+
+  <textarea id="nguyenVong" rows="3" cols="40" placeholder="Nhập tâm nguyện của bạn..."></textarea><br/>
+  <button onclick="thapNhang()">Thắp nhang</button>
 
   <div class="message" id="messageArea"></div>
 
@@ -131,7 +139,7 @@
 
       let thongDiep = '🙏 Bạn đã thành tâm thắp nhang. Chư Phật chứng giám cho tâm nguyện của bạn.';
       if (nguyen.length > 10) {
-        thongDiep += ' "Nguyện tâm thanh tịnh, nguyện đời an yên."';
+        thongDiep += ' “Nguyện tâm thanh tịnh, nguyện đời an yên.”';
       }
 
       messageArea.textContent = thongDiep;
